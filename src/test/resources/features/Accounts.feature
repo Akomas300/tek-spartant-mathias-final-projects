@@ -11,16 +11,10 @@ Feature: Navigate to Customer Service Portal with valid CSR credentials
     @Scenario2
     Scenario: navigate to Accounts change show per page to 10, 25, 50 and
     validate table records per page according to selected show per page
-      When wait for 1000 ms
       When user change show per page to 10
-      When wait for 1000 ms
       Then user validate 10 row page is displayed
-      When wait for 1000 ms
       When user change show per page to 25
-      When wait for 1000 ms
       Then user validate 25 row page is displayed
-      When wait for 1000 ms
       When user change show per page to 50
-      When wait for 1000 ms
       Then user validate 50 row page is displayed
 
