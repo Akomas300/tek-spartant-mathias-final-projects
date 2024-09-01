@@ -8,23 +8,25 @@ import tekFinalProject.bdd.pages.SignUpPage;
 import tekFinalProject.bdd.utility.SeleniumUtility;
 
 public class CreateAccountSteps extends SeleniumUtility {
-   public String username;
-@When("validate user in {string} page")
+   private final String randomUsername;
+
+    public CreateAccountSteps() {
+        this.randomUsername = RandomUsername();
+    }
+
+    @When("validate user in {string} page")
     public void validateUserInAPage(String text){
     String xpath="//h2[text()='"+text+"']";
     Assert.assertEquals(gettingText(By.xpath(xpath))
             ,text);
 }
 
-    @Then("validate error message {string} is displayed as expected")
-    public void validateErrorMessageAsExpected(String message) {
-    String text= gettingText(By.xpath("//div[@role='alert']")).replace("ERROR","").trim();
-    Assert.assertEquals(message,text);
-    }
+
 
     @Then("user click on profile icon")
     public void userClickOnProfileIcon() {
-    clickOnElement(By.xpath("//button[@aria-label='profile']"));
+
+        clickOnElement(By.xpath("//button[@aria-label='profile']"));
     }
 
     @Then("validate full name display at profile section")
@@ -36,16 +38,20 @@ public class CreateAccountSteps extends SeleniumUtility {
 
     @When("user enter signUp information")
     public void userEnterSignUpInformation() {
-    username=RandomUsername();
-    sendText(SignUpPage.USER_NAME_INPUT,username);
+    //randomUsername=RandomUsername();
+    sendText(SignUpPage.USER_NAME_INPUT,randomUsername);
     sendText(SignUpPage.PASSWORD_INPUT,"Akomas21");
     sendText(SignUpPage.CONFIRM_PASSWORD_INPUT,"Akomas21");
     }
 
-    @When("user enter signIn information")
-    public void userEnterSignInInformation() {
-        sendText(SignUpPage.USER_NAME_INPUT,username);
-        sendText(SignUpPage.PASSWORD_INPUT,"Akomas21");
+    @When("user enter {string} and {string} to signIn")
+    public void userEnterSignInInformation(String usernameInput,String passwordInput) {
+    if (usernameInput.equalsIgnoreCase("randomUserName")){
+        sendText(SignUpPage.USER_NAME_INPUT,randomUsername);}
+    else {
+        sendText(SignUpPage.USER_NAME_INPUT,usernameInput);
+    }
+        sendText(SignUpPage.PASSWORD_INPUT,passwordInput);
     }
 }
 

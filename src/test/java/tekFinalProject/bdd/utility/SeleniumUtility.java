@@ -11,14 +11,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import tekFinalProject.bdd.base.BaseSetup;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class SeleniumUtility extends BaseSetup {
     private  static final Logger LOGGER = LogManager.getLogger(SeleniumUtility.class);
-    private WebDriverWait getWait(){
+    private static WebDriverWait getWait(){
         return new WebDriverWait(getDriver(), Duration.ofSeconds(20));
     }
-    public WebElement waitForVisibility(By locator){
+    public static WebElement waitForVisibility(By locator){
         return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     public void clickOnElement(By locator){
@@ -51,6 +53,18 @@ public class SeleniumUtility extends BaseSetup {
     }
     public String RandomUsername(){
         return "mahdi"+(int)(Math.random()*1000);
+    }
+    public String todayDate(){
+        LocalDateTime today=LocalDateTime.now();
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("MMMM d,yyyy");
+        return today.format(formatter);
+    }
+
+    public String tomorrowDate(){
+        LocalDateTime today=LocalDateTime.now();
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("MMMM d,yyyy");
+        LocalDateTime tomorrow=today.plusDays(1);
+        return tomorrow.format(formatter);
     }
 
 }

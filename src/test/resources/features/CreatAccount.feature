@@ -66,7 +66,7 @@ Scenario: Create Account with Age less that 18 Years Old
    When user enter signUp information
     Then user click on "Submit" button
     Then validate user in "Sign in to your Account" page
-    When user enter signIn information
+    When user enter "RandomUsername" and "Akomas21" to signIn
     Then user click on "Sign In" button
     Then validate user in "Primary Account Portal" page
     Then user click on profile icon
