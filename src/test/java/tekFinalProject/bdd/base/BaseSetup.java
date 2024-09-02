@@ -60,6 +60,7 @@ public class BaseSetup {
        }else { throw new RuntimeException("Wrong browser type choose between chrome, firefox or edge");
        }
        String url=properties.getProperty("ui.url");
+       LOGGER.info("Navigating to URL {}", url);
        driver.manage().window().maximize();
        driver.get(url);
        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

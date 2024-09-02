@@ -10,12 +10,12 @@ public class HooksSteps extends SeleniumUtility {
     public void beforeEachScenario(){
         setupBrowser();
     }
-   /* @After
+    @After
     public void afterEachScenario(Scenario scenario){
         if(scenario.isFailed()){
             byte[] screenshot = takeScreenshot();
             scenario.attach(screenshot,"image/png", "failed_scenario");
         }
         quiteBrowse();
-    }*/
+    }
 }

@@ -18,26 +18,32 @@ import java.util.List;
 public class SeleniumUtility extends BaseSetup {
     private  static final Logger LOGGER = LogManager.getLogger(SeleniumUtility.class);
     private static WebDriverWait getWait(){
+
         return new WebDriverWait(getDriver(), Duration.ofSeconds(20));
     }
     public static WebElement waitForVisibility(By locator){
         return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     public void clickOnElement(By locator){
+        LOGGER.debug("Clicking on {}",locator);
         waitForVisibility(locator).click();
     }
     public void sendText(By locator,String text){
+        LOGGER.debug("Sending {} in {}",text,locator);
         waitForVisibility(locator).clear();
         if (text!=null){
         waitForVisibility(locator).sendKeys(text);}
     }
     public String gettingText(By locator ){
+        LOGGER.debug("Returning element {}",locator);
         return waitForVisibility(locator).getText();
     }
     public boolean isElementEnable(By locator){
-       return waitForVisibility(locator).isEnabled();
+
+        return waitForVisibility(locator).isEnabled();
     }
-    public boolean isDisplayed(By locator){
+    public boolean isDisplayed(By locator)
+    {LOGGER.debug("Checking if the element {} is displayed",locator);
         return waitForVisibility(locator).isDisplayed();
     }
     public List<WebElement> getElements(By locator){
@@ -49,9 +55,11 @@ public class SeleniumUtility extends BaseSetup {
         return screenshot.getScreenshotAs(OutputType.BYTES);
     }
     public String RandomEmail(){
-       return "akomas"+(int)(Math.random()*10000)+"@gmail.com";
+
+        return "akomas"+(int)(Math.random()*10000)+"@gmail.com";
     }
     public String RandomUsername(){
+
         return "mahdi"+(int)(Math.random()*1000);
     }
     public String todayDate(){
