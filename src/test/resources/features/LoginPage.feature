@@ -18,12 +18,12 @@ Feature: Navigate to login page
       | username   | password          |
       | supervisor | tek_supervisor222 |
 
-@Scenario2
+  @Scenario2
   Scenario Outline:
     When user enter "<username>" and "<password>" to signIn
     Then user click on "Sign In" button
     Then wait for 1000 ms
-    Then validate wrong username error
+    Then validate error message "" is displayed as expected
     Examples:
       | username     | password         |
       | supervisor23 | tek_supervisor   |

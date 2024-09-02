@@ -19,16 +19,12 @@ public class LoginSteps extends SeleniumUtility {
     public void validateErrorMessageAsExpected(String message) {
         String text= gettingText(By.xpath("//div[@role='alert']"))
                 .replace("ERROR","").trim();
-        Assert.assertEquals(message,text);
-    }
-
-    @Then("validate wrong username error")
-    public void validateErrorMessageAsExpected() {
-        String text= gettingText(By.xpath("//div[@role='alert']")).replace("ERROR","").trim();
-        String input= waitForVisibility(By.id("username")).getAttribute("value");
-        String message="User "+input+" not found";
-        Assert.assertEquals(message,text);
-        //System.out.println(message);
+        if (message.isEmpty()){
+            String input= waitForVisibility(By.id("username")).getAttribute("value");
+            String string="User "+input+" not found";
+            Assert.assertEquals(string,text);
+        }else {
+            Assert.assertEquals(message,text);}
     }
 
 }
