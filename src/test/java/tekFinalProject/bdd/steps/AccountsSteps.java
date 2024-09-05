@@ -13,9 +13,9 @@ import java.util.List;
 public class AccountsSteps extends SeleniumUtility {
     @Then("user validate {int} row page is displayed")
     public void userValidateRowPageIsDisplayed(int value) {
-        List<WebElement> row=getElements(By.xpath("//tbody/tr"));
+        List<WebElement> rows=getElements(By.xpath("//tbody/tr"));
         //System.out.println(row.size());
-        Assert.assertEquals(value,row.size());
+        Assert.assertEquals(value,rows.size());
     }
 
     @When("user change show per page to {int}")
