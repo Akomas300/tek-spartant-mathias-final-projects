@@ -22,7 +22,7 @@ Feature: Navigate to login page
   Scenario Outline:
     When user enter "<username>" and "<password>" to signIn
     Then user click on "Sign In" button
-    Then wait for 1000 ms
+   # Then wait for 1000 ms
     Then validate error message "" is displayed as expected
     Examples:
       | username     | password         |
