@@ -12,6 +12,7 @@ import tekFinalProject.bdd.base.BaseSetup;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class SeleniumUtility extends BaseSetup {
         return "mahdi"+(int)(Math.random()*1000);
     }
     public String todayDate(){
-        LocalDateTime today=LocalDateTime.now();
+        LocalDateTime today=LocalDateTime.now(ZoneId.of("-05:00"));
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("MMMM d, yyyy");
         return today.format(formatter);
     }
