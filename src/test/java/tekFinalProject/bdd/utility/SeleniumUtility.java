@@ -64,13 +64,13 @@ public class SeleniumUtility extends BaseSetup {
         return "mahdi"+(int)(Math.random()*1000);
     }
     public String todayDate(){
-        LocalDateTime today=LocalDateTime.now(ZoneId.of("-05:00"));
+        LocalDateTime today=LocalDateTime.now(ZoneId.of("America/New_York"));
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("MMMM d, yyyy");
         return today.format(formatter);
     }
 
     public String tomorrowDate(){
-        LocalDateTime today=LocalDateTime.now();
+        LocalDateTime today=LocalDateTime.now(ZoneId.of("America/New_York"));
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("MMMM d, yyyy");
         LocalDateTime tomorrow=today.plusDays(1);
         return tomorrow.format(formatter);
